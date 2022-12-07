@@ -294,8 +294,9 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const map = 'A♣2♣3♣4♣5♣6♣7♣8♣9♣0♣J♣Q♣K♣A♦2♦3♦4♦5♦6♦7♦8♦9♦0♦J♦Q♦K♦A♥2♥3♥4♥5♥6♥7♥8♥9♥0♥J♥Q♥K♥A♠2♠3♠4♠5♠6♠7♠8♠9♠0♠J♠Q♠K♠';
+  return map.indexOf(value.substr(-2)) / 2;
 }
 
 
