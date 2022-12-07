@@ -235,7 +235,6 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  // const abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   let res = '';
   function encodeChar(ch) {
     const chCode = ch.charCodeAt(0);
@@ -266,8 +265,8 @@ function encodeToRot13(str) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof (value) === 'string' || value instanceof String;
 }
 
 
