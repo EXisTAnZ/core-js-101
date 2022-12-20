@@ -36,7 +36,7 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-  return [...new Array(len)].map((e, i) => i * 2 + 1);
+  return [...new Array(len)].map((el, i) => i * 2 + 1);
 }
 
 
@@ -442,9 +442,16 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  return new Array(n)
+    .fill(0)
+    .map(() => new Array(n).fill(0))
+    .map((el, i) => {
+      el.splice(i, 1, 1);
+      return el;
+    });
 }
+
 
 /**
  * Creates an array of integers from the specified start to end (inclusive)
