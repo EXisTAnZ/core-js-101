@@ -186,8 +186,7 @@ function partialUsingArguments(fn, ...args1) {
 function getIdGeneratorFunction(startFrom) {
   let start = startFrom - 1;
   return () => {
-    // eslint-disable-next-line no-plusplus
-    start++;
+    start += 1;
     return start;
   };
 }
