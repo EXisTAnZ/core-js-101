@@ -430,8 +430,20 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  function rowWinner(row) {
+    return (row[0] === row[1] && row[0] === row[2]) ? row[0] : undefined;
+  }
+  const res = [];
+  res.push(rowWinner(position[0]));
+  res.push(rowWinner(position[1]));
+  res.push(rowWinner(position[2]));
+  res.push(rowWinner([position[0][0], position[1][0], position[2][0]]));
+  res.push(rowWinner([position[0][1], position[1][1], position[2][1]]));
+  res.push(rowWinner([position[0][2], position[1][2], position[2][2]]));
+  res.push(rowWinner([position[0][0], position[1][1], position[2][2]]));
+  res.push(rowWinner([position[0][2], position[1][1], position[2][0]]));
+  return res.sort((a, b) => b - a)[0];
 }
 
 
