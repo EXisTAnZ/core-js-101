@@ -260,10 +260,9 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-  const res = ccn.toString().split('').reverse()
+  return !((ccn.toString().split('').reverse()
     .map((el, i) => (i % 2 ? el * 2 : +el))
-    .reduce((acc, cur) => acc + (cur > 9 ? cur - 9 : cur));
-  return !(res % 10);
+    .reduce((a, b) => a + (b > 9 ? b - 9 : b))) % 10);
 }
 
 /**
@@ -309,12 +308,11 @@ function getDigitalRoot(num) {
  */
 function isBracketsBalanced(str) {
   let res = str;
-  const q = str.length;
   const bracketsStrings = ['{}', '[]', '<>', '()'];
   function replaceBracket(br) {
     res = res.replace(br, '');
   }
-  for (let i = 0; i < q; i += 1) {
+  for (let i = 0; i < str.length; i += 1) {
     bracketsStrings.forEach((bracket) => replaceBracket(bracket));
   }
   return res.length === 0;
@@ -358,8 +356,13 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  const res = [];
+  const p = (pathes.shift()).split('/');
+  p.forEach((dir, i) => {
+    if (pathes.every((el) => el.split('/')[i] === dir)) res.push(dir);
+  });
+  return `${res.join('/')}${res.length ? '/' : ''}`;
 }
 
 
